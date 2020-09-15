@@ -1,0 +1,84 @@
+<%- include("partials/header.ejs") %>
+
+
+<div id="report-page">
+  <section class="section">
+      <div class="columns">
+        <div class="column">
+            <div id="screen-box">
+                <img id="screenshot" src="data:image/png;base64,<%=data.general[0].screenshot%>">
+                <div id="screen"></div>
+            </div>
+            <div class="column">
+              <h1 id="reported-url"><a href="<%=data.general[0].url%>" target="_blank"><%=data.general[0].url%></a></h1>
+              <div>Generated on <%=data.general[0].reportsDate%></div>
+              <div>Response time: <%=data.general[0].responseTime%> sec.</div>
+          </div>
+        </div>
+      </div>
+  </section>
+  <section class="section">
+    <div class="columns">
+      <div class="column is-half">
+        <div id="char-container">
+        <canvas id="myChart" width="50" height="50"></canvas>
+        </div>
+    </div>
+    <div class="column">
+      <div class="progress-pie-chart" data-percent="<%=data.general[1].total%>">
+        <div class="ppc-progress">
+          <div class="ppc-progress-fill"></div>
+        </div>
+        <div class="ppc-percents">
+          <div class="pcc-percents-wrapper">
+            <span><%=data.general[1].total%>%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <table class="table is-bordered is-fullwidth">
+    <thead>
+      <tr>
+        <th class="has-background-light" colspan=3>Common SEO problems</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.rules.forEach(i=>{ %>
+        <tr>
+          <td class="has-text-weight-semibold">
+            <%=i[0].title%> Test
+          </td>
+          <td>
+            <img class="image" src="/img/status_<%=i[1].negativeScore%>.png">
+          </td>
+          <td>
+          <p class="rule-description"><%=i[1].description%></p>
+          <% if(i[0].displayData  === true){ %>
+                <div class="details-box">
+                  <details>
+                      <summary class="button is-link is-light is-small">See details</summary>
+                    <% i[0].dataToDisplay.forEach(item=>{ %>
+                      <div><b><%=item.name%></b></div>
+                      <%item.values.forEach(value=>{ %>
+                      <div><%=value%></div>
+                        <%}) %>
+                    <%}) %>
+                </details>
+            </div>  
+        <% } %>
+        </td>
+      </tr>
+  <%}) %>
+      
+   
+<script>const summaryForCharts = '<%-JSON.stringify(data.general[1].summary)%>'
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script type="text/javascript" src="/js/charts.js"></script>
+    </body>
+</head>
+</html>

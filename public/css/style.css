@@ -1,0 +1,250 @@
+ /* Css for circle progress char START*/
+.progress-pie-chart {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #E5E5E5;
+    position: relative;
+  }
+  .progress-pie-chart.gt-50 {
+    background-color: #81CE97;
+  }
+  .ppc-progress {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    left: calc(50% - 100px);
+    top: calc(50% - 100px);
+    width: 200px;
+    height: 200px;
+    clip: rect(0, 200px, 200px, 100px);
+  }
+  .ppc-progress .ppc-progress-fill {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    left: calc(50% - 100px);
+    top: calc(50% - 100px);
+    width: 200px;
+    height: 200px;
+    clip: rect(0, 100px, 200px, 0);
+    background: #81CE97;
+    transform: rotate(60deg);
+  }
+  .gt-50 .ppc-progress {
+    clip: rect(0, 100px, 200px, 0);
+  }
+  .gt-50 .ppc-progress .ppc-progress-fill {
+    clip: rect(0, 200px, 200px, 100px);
+    background: #E5E5E5;
+  }
+  .ppc-percents {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    left: calc(50% - 173.9130434783px/2);
+    top: calc(50% - 173.9130434783px/2);
+    width: 173.9130434783px;
+    height: 173.9130434783px;
+    background: #fff;
+    text-align: center;
+    display: table;
+  }
+  .ppc-percents span {
+    display: block;
+    font-size: 2.6em;
+    font-weight: bold;
+    color: #81CE97;
+  }
+  .pcc-percents-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+  }
+ /* Css for circle progress char END*/
+  
+/* Css for preloader START*/
+#preloader {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #3298dc;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+          align-items: stretch;
+  -webkit-box-pack: center;
+          justify-content: center;
+  align-content: center;
+}
+
+#loading-box {
+  min-height: 60pt;
+}
+
+@-webkit-keyframes loading {
+  0% {
+    width: 50pt;
+    height: 50pt;
+    margin-top: 0;
+  }
+  25% {
+    height: 4pt;
+    margin-top: 23pt;
+  }
+  50% {
+    width: 4pt;
+  }
+  75% {
+    width: 50pt;
+  }
+  100% {
+    width: 50pt;
+    height: 50pt;
+    margin-top: 0;
+  }
+}
+
+@keyframes loading {
+  0% {
+    width: 50pt;
+    height: 50pt;
+    margin-top: 0;
+  }
+  25% {
+    height: 4pt;
+    margin-top: 23pt;
+  }
+  50% {
+    width: 4pt;
+  }
+  75% {
+    width: 50pt;
+  }
+  100% {
+    width: 50pt;
+    height: 50pt;
+    margin-top: 0;
+  }
+}
+#loader {
+  width: 50pt;
+  height: 50pt;
+  border-radius: 100%;
+  border: #ffffff 4pt solid;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: transparent;
+  -webkit-animation: loading 1s infinite;
+          animation: loading 1s infinite;
+}
+
+#load-text {
+  padding-top: 15px;
+  text-align: center;
+  font: 14pt "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: white;
+}
+
+#preloader{
+  display: none;
+} 
+
+/* Css for preloader END*/
+
+
+ td{
+   max-width: 100px;
+ }
+
+ td img{
+  max-width: initial;
+}
+
+ header{
+   position: absolute;
+ }
+
+ #homepage{
+   height: 800px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   background-image: url("/img/homepage.jpg");
+   color: #000 !important;
+ }
+
+ 
+ #reported-url{
+   font-size: 1.5rem;
+ }
+ 
+ #screenshot{
+  position: absolute;
+  z-index: 1;
+  margin: 8px 0 0 0px;
+  width: 211px;
+  height: 114px;
+}
+
+
+#screen{
+  width: 220px;
+  height: 177px;
+  background: url(/img/screenshot-monitor.svg) 0 0 no-repeat;
+}
+ 
+#char-container{
+  width: 300px;
+  height: 300px;
+}
+
+.button.is-link.is-light{
+  font-size: 0.6rem;
+}
+
+.has-addons{
+  display: block !important;
+}
+
+.navbar{
+  background-color: #0000 !important;
+}
+
+@media only screen and (min-width:500px){ 
+
+  #report-page{
+  width: 70%;
+  margin: 0 auto;
+}
+
+  #reported-url{
+    font-size: 2rem;
+  }
+
+  #screen-box{
+    display: flex;
+    justify-content: center;
+  }
+
+  .section:nth-of-type(1){
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+  }
+
+  .button.is-link.is-light{
+    font-size: initial;
+  }
+
+  .has-addons{
+    display: flex !important;;
+  }
+
+}
+
+ 

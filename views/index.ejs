@@ -1,0 +1,50 @@
+<%- include("partials/header.ejs") %>
+
+<div id="preloader">
+  <div id="loading-box">
+  <div id="loader">
+  </div>
+  </div>
+  <div id="load-text">
+  Loading...
+  </div>
+</div>
+
+<div id="homepage">
+  <div id="form-box">
+      <div class="title is-1 has-text-danger-dark">Check your website's SEO</div>
+      <div class="subtitle is-4 has-text-black	">Improve your SEO rating and get more visitors to your website</div>
+
+      <div class="container mt-6">
+          <form id="analyze-form" method="GET" action="/analyze">
+            <div class="field has-addons">
+                <div class="control is-expanded">
+                    <input type="text"  id="form-input-url" class="input is-medium" name="url" placeholder="Please enter a URL here">
+                </div>
+                <div class="control">
+                    <button type="submit" id="form-submit-btn" class="button is-info is-medium">Start test</button>
+                </div>
+            </div>
+          </form>
+          
+          <% if(error && error.length>0){%>
+            <div class="notification is-danger"><%=error%></div>
+          <%}%>
+      </div>  
+</div>    
+      
+
+  <script type="text/javascript" src="/js/script.js"></script>
+
+
+
+</body>
+</html>
+
+  
+
+
+
+
+
+   
