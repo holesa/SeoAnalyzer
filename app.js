@@ -37,6 +37,5 @@ app.get("*",(req, res)=>{
 })
       
 app.listen(port, (req,res)=>{
-    console.log("Env here " +  process.env.PORT)
     console.log("Server is running!");
 })      
