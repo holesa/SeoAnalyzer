@@ -204,6 +204,10 @@
   height: 300px;
 }
 
+#screen-box{
+  margin-top: 50px;
+}
+
 .button.is-link.is-light{
   font-size: 0.6rem;
 }
