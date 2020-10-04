@@ -1,11 +1,9 @@
 const puppeteer = require("puppeteer");
-
 class SEO{
     constructor(url){
         this.url = url,
         this.results = {};
     }
-
     trimUrl(){
         return this.url.replace(/https/g,"")
         .replace(/http/g,"")
@@ -25,24 +23,35 @@ class SEO{
 
     async getData(){
         // First laod HTML of a site
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-accelerated-2d-canvas',
+      '--no-first-run',
+      '--no-zygote',
+      '--single-process', // <- this one doesn't works in Windows
+      '--disable-gpu'
+    ],
+    headless: true
+  });
         const page = await browser.newPage();
+	await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36')          
         const url  = this.addHttp(this.url); 
-        try {
-          await page.goto(url)
+	 try {
+	console.log("Provided URL is fine");
+        await page.goto(url)
         } catch (error) {
-          await page.close();
-          await browser.close();
+	  console.log("Provided URL cannot be processed");
           return false;
-        }
-
+        } 
             // Get general data about a site, not for testing
             async function getGeneralData(){
                 const results = {};
                 // Screenshot
-                results.screenshot = await page.screenshot({encoding:"base64"});
-
-                // Url
+                results.screenshot =  await page.screenshot({encoding:"base64"});                
+		// Url
                 results.url = page.url();
 
                 // Reports date and time
@@ -309,6 +318,7 @@ class SEO{
                         value++;
                     }
                 }
+ 		  
                     result = value === 0 ? true : false; 
                     return {
                         dataForTest: result,
@@ -387,6 +397,7 @@ class SEO{
         ])
         .then(d=>d)
         .catch(error=>false)
+	    .finally(()=>browser.close())
      };
 
 
