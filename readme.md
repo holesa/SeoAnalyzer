@@ -2,9 +2,6 @@
 
 SeoAnalyzer is a website application written in Node.js for checking on-page SEO. After providing a website URL, the app will generate a short report and calculate a score based on a website's performance.
 
-## Demo:
-You can find a live version [here.](https://seoanalyzer.site)  
-
 ## Features:
 * Backend API is built on Express.js.
 * CSS framework Bulma is used in frontend.
